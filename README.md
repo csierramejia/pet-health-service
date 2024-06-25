@@ -6,7 +6,8 @@ pnpm init
 
 
 
-## Steps to set up Mongo with Docker for local testing
+
+### Steps to set up Mongo with Docker for local testing
 
 docker pull mongodb/mongodb-community-server:latest
 
