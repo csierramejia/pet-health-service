@@ -1,14 +1,29 @@
-# pet-health-service
-pet-health-service
+# Pet Health Service
 
+A microservice for managing the health records of pets. Built with Node.js, Express, and MongoDB.
 
-pnpm init
+## Prerequisites
 
+- [Node.js](https://nodejs.org/)
+- [Docker](https://www.docker.com/)
+- [pnpm](https://pnpm.io/)
 
+## Installation
 
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/tu-usuario/pet-health-service.git
+    cd pet-health-service
+    ```
 
-### Steps to set up Mongo with Docker for local testing
+2. Install dependencies:
+    ```bash
+    pnpm install
+    ```
 
-docker pull mongodb/mongodb-community-server:latest
+## Environment Variables
 
-docker run --name mongodb -p 27017:27017 -d mongodb/mongodb-community-server:latest
+Create a `.env` file in the root directory and add the following variables:
+```env
+URL_MONGODB=mongodb://localhost:27017/petHealthService
+PORT=3000
