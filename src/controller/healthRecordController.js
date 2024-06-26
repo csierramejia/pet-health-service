@@ -1,11 +1,35 @@
 import { response, request } from "express";
-import { getHealthRecordByName } from "../services/healthRecordService.js"
+import {
+    getHealthRecordByName,
+    saveHealthRecord,
+    getHealthRecords
+} from "../services/healthRecordService.js"
 
-export const getRecordByName = async ( req = request, res = response ) => {
+export const getRecords = async (req = request, res = response) => {
 
     const { name } = req.params;
 
-    const healthRecord = await getHealthRecordByName( name );
+    const healthRecord = await getHealthRecords(name);
+
+    res.json({
+        healthRecord
+    });
+}
+
+export const getRecordByName = async (req = request, res = response) => {
+
+    const { name } = req.params;
+
+    const healthRecord = await getHealthRecordByName(name);
+
+    res.json({
+        healthRecord
+    });
+}
+
+export const saveRecord = async (req = request, res = response) => {
+
+    const healthRecord = await saveHealthRecord(req.body);
 
     res.json({
         healthRecord
