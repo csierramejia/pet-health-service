@@ -2,14 +2,14 @@ import { response, request } from "express";
 import {
     getHealthRecordByName,
     saveHealthRecord,
-    getHealthRecords
+    getHealthRecordsByDate
 } from "../services/healthRecordService.js"
 
-export const getRecords = async (req = request, res = response) => {
+export const getRecordsByDate = async (req = request, res = response) => {
 
-    const { name } = req.params;
+    const { visitDate } = req.params;
 
-    const healthRecord = await getHealthRecords(name);
+    const healthRecord = await getHealthRecordsByDate( visitDate );
 
     res.json({
         healthRecord

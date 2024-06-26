@@ -2,13 +2,13 @@ import { Router } from "express";
 import { check } from "express-validator";
 import { getRecordByName, 
          saveRecord,
-         getRecords
+         getRecordsByDate
          } from "../controller/healthRecordController.js"
 
 
 export const router = Router();
 
-router.get('/', getRecords );
+router.get('/:visitDate', getRecordsByDate );
 
 router.get('/:name', getRecordByName );
 
