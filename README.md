@@ -23,7 +23,7 @@ A microservice for managing the health records of pets. Built with Node.js, Expr
 
 ## Environment Variables
 
-[! Important ]
+> [! Important ]
 Create a `src/.env` file in the root directory and add the following variables:
 ```env
 URL_MONGODB=mongodb://localhost:27017/petHealthService
