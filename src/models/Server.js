@@ -1,51 +1,45 @@
 import express from 'express';
 import cors from 'cors';
 import { router } from '../routes/healthRecordRoutes.js';
-import { DBConnection } from '../config/dbConfig.js'
+import { DBConnection } from '../config/dbConfig.js';
 
 export class Server {
-
     constructor() {
-        this.app  = express();
+        this.app = express();
         this.port = process.env.PORT;
-        this.usuariosPath = '/api/pets';
+        this.apiPaths = {
+            healthRecords: '/api/pets',
+        };
 
-        // Conectar a base de datos
-        this.conectarDB();
+        // Connect to database
+        this.connectDB();
 
         // Middlewares
         this.middlewares();
 
-        // Rutas de mi aplicación
+        // Routes
         this.routes();
     }
 
-    async conectarDB() {
+    async connectDB() {
         await DBConnection();
     }
 
-
     middlewares() {
-
         // CORS
-        this.app.use( cors() );
+        this.app.use(cors());
 
-        // Lectura y parseo del body
-        this.app.use( express.json() );
-
-        // Directorio Público
-        //this.app.use( express.static('public') );
-
+        // Body parsing
+        this.app.use(express.json());
     }
 
     routes() {
-        this.app.use( this.usuariosPath, router);
+        this.app.use(this.apiPaths.healthRecords, router);
     }
 
     listen() {
-        this.app.listen( this.port, () => {
-            console.log('Servidor corriendo en puerto', this.port );
+        this.app.listen(this.port, () => {
+            console.log('Server running on port', this.port);
         });
     }
-
 }

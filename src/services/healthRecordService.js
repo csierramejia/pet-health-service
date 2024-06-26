@@ -39,7 +39,6 @@ export const saveHealthRecord = async (body) => {
 
     try {
         const record = new HealthRecord(body);
-        record.visitDate = new Date();
         return await record.save();
     } catch (error) {
         console.error('Error save record:', error);

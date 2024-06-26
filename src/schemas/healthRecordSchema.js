@@ -46,6 +46,7 @@ const healthRecordSchema = new Schema({
     },
     visitDate: {
         type: Date,
+        default: Date.now,
         required: [true, 'Visit date is required']
     },
     reasonForVisit: {
@@ -68,5 +69,11 @@ const healthRecordSchema = new Schema({
         type: String,
     }
 });
+
+healthRecordSchema.methods.toJSON = function() {
+    const { __v, _id, ...healthRecord  } = this.toObject();
+    healthRecord.uuid = _id;
+    return healthRecord;
+}
 
 export const HealthRecord = model('HealthRecord', healthRecordSchema);

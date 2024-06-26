@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import 'dotenv/config'
 
 /**
- * 
+ * Establishes a connection to the MongoDB database.
  */
 export const DBConnection = async () => {
 
