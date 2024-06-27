@@ -24,6 +24,15 @@ A microservice for managing the health records of pets. Built with Node.js, Expr
 ## Environment Variables
 
 ⚠️ Create a `src/.env` file in the root directory and add the following variables:
-```env
+```bash
 URL_MONGODB=mongodb://localhost:27017/petHealthService
 PORT=3000
+```
+
+## Build / Run Docker
+
+```bash
+docker build -t pet-health-service .
+
+docker run -p PORT:PORT pet-health-service
+```
