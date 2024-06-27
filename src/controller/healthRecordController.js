@@ -26,9 +26,9 @@ export const getRecordsByDate = async (req = request, res = response) => {
  * Gets a health record by pet name.
  */
 export const getRecordByName = async (req = request, res = response) => {
-    const { name } = req.params;
+    const { petName } = req.params;
     try {
-        const healthRecord = await getHealthRecordByName(name);
+        const healthRecord = await getHealthRecordByName(petName);
         res.json({ healthRecord });
     } catch (error) {
         logger.error(`Error retrieving health record by name: ${error}`); 

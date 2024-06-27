@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { validateFields } from "../middleware/validateFields.js";
+import { validateFields } from "../middleware/index.js";
 import {
     getRecordByName,
     saveRecord,
@@ -12,8 +12,8 @@ export const router = Router();
 
 router.get('/date/:visitDate', getRecordsByDate);
 
-router.get('/name/:name', [
-    check('name', 'Name is required').not().isEmpty(),
+router.get('/name/:petName', [
+    check('petName', 'petName is required').not().isEmpty(),
     validateFields
 ], getRecordByName);
 
