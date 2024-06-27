@@ -36,3 +36,16 @@ docker build -t pet-health-service .
 
 docker run -p PORT:PORT pet-health-service
 ```
+
+
+## Deployment / local minikube
+
+```bash
+kubectl delete -f deployment.yaml
+kubectl delete -f service.yaml
+
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+minikube service pet-health-service
+```

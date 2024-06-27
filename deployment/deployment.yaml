@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pet-health-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pet-health-service
+  template:
+    metadata:
+      labels:
+        app: pet-health-service
+    spec:
+      containers:
+        - name: pet-health-service
+          image: 10013113/pet-health-service:latest
+          ports:
+            - containerPort: 9091
+          env:
+            - name: NODE_ENV
+              value: "production"
+          resources:
+            limits:
+              cpu: "0.5"     # Límite de CPU en unidades (0.5 significa 0.5 cores)
+              memory: "512Mi" # Límite de memoria en MiB
+            requests:
+              cpu: "0.2"     # Recurso solicitado de CPU
+              memory: "256Mi" # Recurso solicitado de memoria
